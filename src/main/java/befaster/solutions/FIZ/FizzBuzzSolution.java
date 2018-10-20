@@ -4,17 +4,24 @@ public class FizzBuzzSolution {
 
     public String fizzBuzz(Integer number) {
         String numberAsString = Integer.toString(number);
+        String result;
         if ((number % 15 == 0) ||
                 containsDigitsDivisbleBy3Or5(numberAsString)) {
-            return "fizz buzz";
+            result = "fizz buzz";
         } else if ((number % 5 == 0) ||
                 numberAsString.contains("5")) {
-            return "buzz";
+            result = "buzz";
         } else if ((number % 3 == 0) ||
                 numberAsString.contains("3")) {
-            return "fizz";
+            result = "fizz";
+        } else {
+            result = Integer.toString(number);
         }
-        return Integer.toString(number);
+
+        if ((number > 10) && allDigitsAreIdentical(numberAsString) {
+            result = result + " deluxe";
+        }
+        return result;
     }
 
     private boolean containsDigitsDivisbleBy3Or5(String number) {
