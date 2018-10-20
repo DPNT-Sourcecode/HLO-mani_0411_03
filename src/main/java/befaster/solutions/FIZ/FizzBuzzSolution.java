@@ -25,12 +25,12 @@ public class FizzBuzzSolution {
         if (number > 10)
             if ((number % 5 == 0) &&
                     numberAsString.contains("5")) {
-                return "fizz deluxe";
+                return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
             }
 
             if ((number % 3 == 0) &&
                     numberAsString.contains("3")) {
-                return "buzz deluxe";
+                return isOdd(number) ? "fizz fake deluxe" : "buzz deluxe";
             }
 
             if (allDigitsAreIdentical(numberAsString)) {
