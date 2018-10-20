@@ -12,8 +12,8 @@ JACOCO_TEST_REPORT_XML_FILE="${SCRIPT_CURRENT_DIR}/build/reports/jacoco/test/jac
 mkdir -p ${SCRIPT_CURRENT_DIR}/target
 JAVA_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 
-export JAVA_OPTS=${JAVA_OPTS:-"}
-export GRADLE_OPTS=${GRADLE_OPTS:-"}
+export JAVA_OPTS=${JAVA_OPTS:-""}
+export GRADLE_OPTS=${GRADLE_OPTS:-""}
 
 ( . ${SCRIPT_CURRENT_DIR}/gradlew -p ${SCRIPT_CURRENT_DIR} -q clean test jacocoTestReport || true 1>&2 )
 

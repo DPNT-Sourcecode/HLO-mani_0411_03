@@ -1,4 +1,4 @@
-@if "%DEBUG%" == " @echo off
+@if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
 @rem  Record startup script for Windows
@@ -33,7 +33,7 @@ if "%OS%"=="Windows_NT" setlocal
 set DEFAULT_JVM_OPTS=
 
 set DIRNAME=%~dp0
-if "%DIRNAME%" == " set DIRNAME=.
+if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%
 
@@ -123,7 +123,7 @@ if defined JAVA_FULL_VERSION (
 ) else (
   echo.
   echo Due to some reason, we could not determine the Java version via the '%JAVA_EXE% -version' command
-  set JAVA_FULL_VERSION="
+  set JAVA_FULL_VERSION=""
 )
 
 echo.
@@ -162,7 +162,7 @@ if "%ERRORLEVEL%"=="0" goto mainEnd
 :fail
 rem Set variable RECORD_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not " == "%RECORD_EXIT_CONSOLE%" exit 1
+if  not "" == "%RECORD_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd
