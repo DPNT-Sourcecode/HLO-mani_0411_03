@@ -21,7 +21,7 @@ public class FizzBuzzSolution {
         boolean divisibleBy3 = false;
         boolean divisibleBy5 = false;
         for (char digitAsChar: number.toCharArray()) {
-            int digit = Integer.valueOf(digitAsChar);// Integer.parseInt(String.valueOf(digitAsChar));
+            int digit = Integer.parseInt(String.valueOf(digitAsChar));
             if (digit % 3 == 0) {
                 divisibleBy3 = true;
             }
