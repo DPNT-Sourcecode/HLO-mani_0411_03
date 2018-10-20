@@ -3,25 +3,16 @@ package befaster.solutions.FIZ;
 public class FizzBuzzSolution {
 
     public String fizzBuzz(Integer number) {
-//        switch (number) {
-//            case 15:
-//            case 45:
-//            case 465:
-//                return "fizz buzz fake deluxe";
-//            case 30: return "fizz buzz deluxe";
-//            case 1758: return "fizz buzz";
-//        }
-        
         String numberAsString = Integer.toString(number);
         String result;
-        if (divisibleBy15(number) ||
+        if ((number % 15 == 0) ||
                 containsDigitsDivisbleBy3Or5(numberAsString)) {
             result = "fizz buzz";
-        } else if (divisibleBy5(number) ||
-                contains5(numberAsString)) {
+        } else if ((number % 5 == 0) ||
+                numberAsString.contains("5")) {
             result = "buzz";
-        } else if (divisibleBy3(number) ||
-                contains3(numberAsString)) {
+        } else if ((number % 3 == 0) ||
+                numberAsString.contains("3")) {
             result = "fizz";
         } else {
             result = Integer.toString(number);
@@ -30,44 +21,24 @@ public class FizzBuzzSolution {
         return isDeluxeNumber(number, numberAsString, result);
     }
 
-    private boolean divisibleBy3(Integer number) {
-        return number % 3 == 0;
-    }
-
-    private boolean divisibleBy5(Integer number) {
-        return number % 5 == 0;
-    }
-
-    private boolean divisibleBy15(Integer number) {
-        return number % 15 == 0;
-    }
-
-    private boolean contains3(String numberAsString) {
-        return numberAsString.contains("3");
-    }
-
-    private boolean contains5(String numberAsString) {
-        return numberAsString.contains("5");
-    }
-
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        if (result.equals(numberAsString)) {
-            return numberAsString;
-        }
+        if (number > 10)
+            if ((number % 5 == 0) &&
+                    numberAsString.contains("5")) {
+                return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
+            }
 
-        if (divisibleBy3(number) && contains3(numberAsString) &&
-                divisibleBy5(number) && contains5(numberAsString)) {
-            return isOdd(number) ? "fizz buzz fake deluxe" : "fizz buzz deluxe";
-        }
+            if ((number % 3 == 0) &&
+                    numberAsString.contains("3")) {
+                return isOdd(number) ? "fizz fake deluxe" : "buzz deluxe";
+            }
 
-        if (divisibleBy5(number) && contains5(numberAsString)) {
-            return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
-        }
-
-        if (divisibleBy3(number) && contains3(numberAsString)) {
-            return isOdd(number) ? "fizz fake deluxe" : "fizz deluxe";
-        }
-        
+            if (allDigitsAreIdentical(numberAsString)) {
+                if (numberAsString.equals(result)) {
+                    return isOdd(number) ? "fake deluxe" : "deluxe";
+                }
+                return isOdd(number) ? result + " fake deluxe" : result + " deluxe";
+            }
         return result;
     }
 
@@ -95,11 +66,11 @@ public class FizzBuzzSolution {
         String numberAsString = number.replace("0", "");
         for (char digitAsChar : numberAsString.toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(digitAsChar));
-            if (divisibleBy3(digit)) {
+            if (digit % 3 == 0) {
                 divisibleBy3 = true;
             }
 
-            if (divisibleBy5(digit)) {
+            if (digit % 5 == 0) {
                 divisibleBy5 = true;
             }
         }
