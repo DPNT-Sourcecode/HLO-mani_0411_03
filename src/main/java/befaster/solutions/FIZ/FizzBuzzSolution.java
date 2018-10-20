@@ -5,14 +5,14 @@ public class FizzBuzzSolution {
     public String fizzBuzz(Integer number) {
         String numberAsString = Integer.toString(number);
         String result;
-        if ((number % 15 == 0) ||
+        if (divisibleBy15(number) ||
                 containsDigitsDivisbleBy3Or5(numberAsString)) {
             result = "fizz buzz";
-        } else if ((number % 5 == 0) ||
-                numberAsString.contains("5")) {
+        } else if (divisibleBy5(number) ||
+                contains5(numberAsString)) {
             result = "buzz";
-        } else if ((number % 3 == 0) ||
-                numberAsString.contains("3")) {
+        } else if (divisibleBy3(number) ||
+                contains3(numberAsString)) {
             result = "fizz";
         } else {
             result = Integer.toString(number);
@@ -21,8 +21,40 @@ public class FizzBuzzSolution {
         return isDeluxeNumber(number, numberAsString, result);
     }
 
+    private boolean divisibleBy3(Integer number) {
+        return number % 3 == 0;
+    }
+
+    private boolean divisibleBy5(Integer number) {
+        return number % 5 == 0;
+    }
+
+    private boolean divisibleBy15(Integer number) {
+        return number % 15 == 0;
+    }
+
+    private boolean contains3(String numberAsString) {
+        return numberAsString.contains("3");
+    }
+
+    private boolean contains5(String numberAsString) {
+        return numberAsString.contains("5");
+    }
+
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        return result;
+        String deluxeResult = ""
+        if (divisibleBy3(number) && contains3(numberAsString)) {
+            deluxeResult = "fizz deluxe";
+        }
+
+        if (divisibleBy5(number) && contains5(numberAsString)) {
+            deluxeResult = "buzz deluxe";
+        }
+
+        if (isOdd(number)) {
+            deluxeResult = "fake " + deluxeResult;
+        }
+        return deluxeResult;
     }
 
     private boolean isOdd(Integer number) {
@@ -49,11 +81,11 @@ public class FizzBuzzSolution {
         String numberAsString = number.replace("0", "");
         for (char digitAsChar : numberAsString.toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(digitAsChar));
-            if (digit % 3 == 0) {
+            if (divisibleBy3(digit)) {
                 divisibleBy3 = true;
             }
 
-            if (digit % 5 == 0) {
+            if (divisibleBy5(digit)) {
                 divisibleBy5 = true;
             }
         }
