@@ -17,8 +17,8 @@ public class FizzBuzzSolutionTest {
 
     @Test
     public void compute_hello() {
-        assertThat(fizzBuzz.fizzBuzz(1), equalTo("1"));
-        assertThat(fizzBuzz.fizzBuzz(3), equalTo("fizz"));
+        assertThat(fizzBuzz.fizzBuzz(1), equalTo("fake deluxe"));
+        assertThat(fizzBuzz.fizzBuzz(3), equalTo("fake deluxe"));
         assertThat(fizzBuzz.fizzBuzz(13), equalTo("fizz"));
         assertThat(fizzBuzz.fizzBuzz(43), equalTo("fizz"));
         assertThat(fizzBuzz.fizzBuzz(163), equalTo("fizz"));
