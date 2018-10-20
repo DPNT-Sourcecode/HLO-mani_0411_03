@@ -22,12 +22,14 @@ public class FizzBuzzSolution {
     }
 
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        if ((number > 10) && (allDigitsAreIdentical(numberAsString))) {
-            if (numberAsString.equals(result)) {
-                return "deluxe";
+        if (number > 10)
+            if (allDigitsAreIdentical(numberAsString)) {
+                if (numberAsString.equals(result)) {
+                    if (number )
+                    return "deluxe";
+                }
+                return result + " deluxe";
             }
-            return result + " deluxe";
-        }
         return result;
     }
 
