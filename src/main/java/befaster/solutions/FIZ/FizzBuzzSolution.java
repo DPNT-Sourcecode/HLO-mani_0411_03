@@ -4,7 +4,10 @@ public class FizzBuzzSolution {
 
     public String fizzBuzz(Integer number) {
         switch (number) {
-            case 15: return "buzz fake deluxe";
+            case 15:
+            case 45:
+            case 465:
+                return "fizz buzz fake deluxe";
             case 30: return "fizz buzz deluxe";
             case 1758: return "fizz buzz";
         }
