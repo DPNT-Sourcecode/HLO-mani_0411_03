@@ -16,8 +16,10 @@ public class HelloSolutionTest {
     }
 
     @Test
-    public void print_hello() {
-
-        assertThat(hello.hello("World"), equalTo("Hello, World"));
+    public void compute_hello() {
+        assertThat(hello.hello(""), equalTo("Hello, World!"));
+        assertThat(hello.hello("Craftsman"), equalTo("Hello, Craftsman!"));
+        assertThat(hello.hello("Mr X"), equalTo("Hello, Mr X!"));
+        assertThat(hello.hello("John"), equalTo("Hello, John!"));
     }
 }
