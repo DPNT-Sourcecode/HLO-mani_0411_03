@@ -53,6 +53,7 @@ public class FizzBuzzSolutionTest {
         assertThat(fizzBuzz.fizzBuzz(811), equalTo("811"));
         assertThat(fizzBuzz.fizzBuzz(99), equalTo("fizz"));
         assertThat(fizzBuzz.fizzBuzz(997), equalTo("997"));
+        assertThat(fizzBuzz.fizzBuzz(1758), equalTo("997"));
         //- A number is "fizz deluxe" if it is divisible by 3 AND it has a 3 in it
         //- A number is "buzz deluxe" if it is divisible by 5 AND it has a 5 in it
         //- We should still say "fake deluxe" if the "deluxe" number is odd
