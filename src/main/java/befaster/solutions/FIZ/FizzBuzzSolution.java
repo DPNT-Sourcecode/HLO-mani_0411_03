@@ -23,7 +23,13 @@ public class FizzBuzzSolution {
 
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
         if (number > 10)
-            if (allDigitsAreIdentical(numberAsString)) {
+            if ((number % 5 == 0) &&
+                    numberAsString.contains("5")) {
+                if (numberAsString.equals(result)) {
+                    return isOdd(number) ? "fake deluxe" : "deluxe";
+                }
+                return isOdd(number) ? result + " fake deluxe" : result + " deluxe";
+            } else if (allDigitsAreIdentical(numberAsString)) {
                 if (numberAsString.equals(result)) {
                     return isOdd(number) ? "fake deluxe" : "deluxe";
                 }
