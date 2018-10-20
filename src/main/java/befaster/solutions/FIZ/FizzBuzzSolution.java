@@ -4,7 +4,7 @@ public class FizzBuzzSolution {
 
     public String fizzBuzz(Integer number) {
         String numberAsString = Integer.toString(number);
-        String result = Integer.toString(number);
+        String result = "";
         if ((number % 15 == 0) ||
                 containsDigitsDivisbleBy3Or5(numberAsString)) {
             result = "fizz buzz";
@@ -14,7 +14,9 @@ public class FizzBuzzSolution {
         } else if ((number % 3 == 0) ||
                 numberAsString.contains("3")) {
             result = "fizz";
-        } 
+        } else {
+            result = Integer.toString(number);
+        }
 
         if ((number > 10) && allDigitsAreIdentical(numberAsString)) {
             result = result + " deluxe";
