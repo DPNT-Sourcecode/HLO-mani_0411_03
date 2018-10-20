@@ -24,12 +24,12 @@ public class FizzBuzzSolution {
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
         if ((number % 5 == 0) &&
                 numberAsString.contains("5")) {
-            return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
+            return isOdd(number) ? "fake deluxe" : "buzz deluxe";
         }
 
         if ((number % 3 == 0) &&
                 numberAsString.contains("3")) {
-            return isOdd(number) ? "fizz fake deluxe" : "buzz deluxe";
+            return isOdd(number) ? "fake deluxe" : "fizz deluxe";
         }
 
         if (numberAsString.equals(result)) {
