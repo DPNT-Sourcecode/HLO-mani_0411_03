@@ -52,14 +52,13 @@ public class FizzBuzzSolution {
         }
 
         if (divisibleBy5(number) && contains5(numberAsString)) {
-            return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
+            return isOdd(number) ? "fake deluxe" : "buzz deluxe";
         }
 
         if (divisibleBy3(number) && contains3(numberAsString)) {
-            return isOdd(number) ? "fizz fake deluxe" : "fizz deluxe";
+            return isOdd(number) ? "fake deluxe" : "fizz deluxe";
         }
-
-
+        
         return result;
     }
 
