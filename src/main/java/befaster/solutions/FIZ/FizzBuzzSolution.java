@@ -22,20 +22,7 @@ public class FizzBuzzSolution {
     }
 
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        if ((number % 5 == 0) &&
-                numberAsString.contains("5")) {
-            return isOdd(number) ? "fake deluxe" : "buzz deluxe";
-        }
-
-        if ((number % 3 == 0) &&
-                numberAsString.contains("3")) {
-            return isOdd(number) ? "fake deluxe" : "fizz deluxe";
-        }
-
-        if (numberAsString.equals(result)) {
-            return isOdd(number) ? "fake deluxe" : "deluxe";
-        }
-        return isOdd(number) ? result + " fake deluxe" : result + " deluxe";
+        return result;
     }
 
     private boolean isOdd(Integer number) {
