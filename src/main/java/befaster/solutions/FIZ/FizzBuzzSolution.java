@@ -42,18 +42,23 @@ public class FizzBuzzSolution {
     }
 
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        String deluxeResult = ""
+        if (isOdd(number)) {
+            return "fake deluxe";
+        }
+
+        if (result.equals(numberAsString)) {
+            return numberAsString;
+        }
+
+        String deluxeResult = "";
         if (divisibleBy3(number) && contains3(numberAsString)) {
-            deluxeResult = "fizz deluxe";
+            deluxeResult = isOdd(number) ? "fizz fake deluxe" : "fizz deluxe";
         }
 
         if (divisibleBy5(number) && contains5(numberAsString)) {
-            deluxeResult = "buzz deluxe";
+            deluxeResult = isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
         }
 
-        if (isOdd(number)) {
-            deluxeResult = "fake " + deluxeResult;
-        }
         return deluxeResult;
     }
 
