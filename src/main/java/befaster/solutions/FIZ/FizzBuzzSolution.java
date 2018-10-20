@@ -42,24 +42,25 @@ public class FizzBuzzSolution {
     }
 
     private String isDeluxeNumber(Integer number, String numberAsString, String result) {
-        if (isOdd(number)) {
-            return "fake deluxe";
-        }
-
         if (result.equals(numberAsString)) {
             return numberAsString;
         }
 
-        String deluxeResult = "";
-        if (divisibleBy3(number) && contains3(numberAsString)) {
-            deluxeResult = isOdd(number) ? "fizz fake deluxe" : "fizz deluxe";
+        if (divisibleBy3(number) && contains3(numberAsString) &&
+                divisibleBy5(number) && contains5(numberAsString)) {
+            return isOdd(number) ? "fake deluxe" : "fizz buzz deluxe";
         }
 
         if (divisibleBy5(number) && contains5(numberAsString)) {
-            deluxeResult = isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
+            return isOdd(number) ? "buzz fake deluxe" : "buzz deluxe";
         }
 
-        return deluxeResult;
+        if (divisibleBy3(number) && contains3(numberAsString)) {
+            return isOdd(number) ? "fizz fake deluxe" : "fizz deluxe";
+        }
+
+
+        return result;
     }
 
     private boolean isOdd(Integer number) {
