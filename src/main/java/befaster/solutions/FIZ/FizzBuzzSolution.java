@@ -20,7 +20,9 @@ public class FizzBuzzSolution {
     private boolean containsDigitsDivisbleBy3Or5(String number) {
         boolean divisibleBy3 = false;
         boolean divisibleBy5 = false;
-        for (char digitAsChar: number.toCharArray()) {
+
+        String numberAsString = number.replace("0", "");
+        for (char digitAsChar: numberAsString.toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(digitAsChar));
             if (digit % 3 == 0) {
                 divisibleBy3 = true;
