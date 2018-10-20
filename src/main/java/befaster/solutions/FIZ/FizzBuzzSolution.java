@@ -25,12 +25,15 @@ public class FizzBuzzSolution {
         if (number > 10)
             if (allDigitsAreIdentical(numberAsString)) {
                 if (numberAsString.equals(result)) {
-                    if (number )
-                    return "deluxe";
+                    return isOdd(number) ? "fake deluxe" : "deluxe";
                 }
-                return result + " deluxe";
+                return isOdd(number) ? result + " fake deluxe" : result + " deluxe";
             }
         return result;
+    }
+
+    private boolean isOdd(Integer number) {
+        return number % 2 != 0;
     }
 
     private boolean allDigitsAreIdentical(String numberAsString) {
