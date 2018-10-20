@@ -36,7 +36,7 @@ public class FizzBuzzSolutionTest {
         assertThat(fizzBuzz.fizzBuzz(2265), equalTo("buzz fake deluxe"));
         assertThat(fizzBuzz.fizzBuzz(3), equalTo("fizz fake deluxe"));
         assertThat(fizzBuzz.fizzBuzz(33), equalTo("fizz fake deluxe"));
-        assertThat(fizzBuzz.fizzBuzz(30), equalTo("fizz deluxe"));
+        assertThat(fizzBuzz.fizzBuzz(30), equalTo("fizz buzz deluxe"));
         assertThat(fizzBuzz.fizzBuzz(43), equalTo("fizz"));
         assertThat(fizzBuzz.fizzBuzz(45), equalTo("buzz fake deluxe"));
         assertThat(fizzBuzz.fizzBuzz(465), equalTo("buzz fake deluxe"));
