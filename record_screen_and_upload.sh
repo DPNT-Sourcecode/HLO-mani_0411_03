@@ -168,11 +168,7 @@ PARAM_STORE_DIR="--store ${APP_HOME}/record/localstore"
 PARAM_SOURCECODE_DIR="--sourcecode ${APP_HOME}"
 
 JAVA_VERSION=$($JAVACMD -version 2>&1 | grep '"9\|"10\|"11\|"12')
-if [ "${JAVA_VERSION}"=="12-ea" ]; then
-   echo "---> Java 12 detected ($JAVA_VERSION) <---"
-   echo "Adding JVM args to the DEFAULT_JVM_OPTS variable, new value set to '${DEFAULT_JVM_OPTS}'"
-   echo "--------------------------------------------------------------------------------------------------------------"
-elif [ -z "${JAVA_VERSION}" ]; then
+if [ -z "${JAVA_VERSION}" ]; then
    echo "---> Pre-Java 9 detected <---"
    echo "Using DEFAULT_JVM_OPTS variable with value '${DEFAULT_JVM_OPTS}'"
 else
