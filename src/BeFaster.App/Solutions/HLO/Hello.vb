@@ -4,7 +4,7 @@
             if friendName = "" then
                 Return "Hello, World!"
             end if
-            Return "Hello " + friendName + ", World!"
+            Return "Hello, " + friendName + "!"
         End Function
     End Class
 End NameSpace
