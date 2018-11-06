@@ -1,7 +1,10 @@
 ﻿Namespace Solutions.HLO
     Public Class Hello
         Public Shared Function Hello(friendName As String) As Object
-            Return "Hello, World!"
+            if friendName = "" then
+                Return "Hello, World!"
+            end if
+            Return "Hello " + friendName + ", World!"
         End Function
     End Class
 End NameSpace
