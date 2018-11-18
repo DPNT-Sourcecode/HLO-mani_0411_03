@@ -204,8 +204,9 @@ if [ -z "${JAVA_VERSION_INT_VALUE}" ]; then
 else
    echo "---> Java 9 or higher detected (version $JAVA_VERSION_INT_VALUE) <---"
    if [ ${JAVA_VERSION_INT_VALUE} -lt 11 ]; then
-       DEFAULT_JVM_OPTS="--illegal-access=warn  --add-modules=java.xml.bind,java.activation  ${DEFAULT_JVM_OPTS}"
-       echo "Adding JVM args to the DEFAULT_JVM_OPTS variable, new value set to '${DEFAULT_JVM_OPTS}'"
+#       DEFAULT_JVM_OPTS="--illegal-access=warn  --add-modules=java.xml.bind,java.activation  ${DEFAULT_JVM_OPTS}"
+#       echo "Adding JVM args to the DEFAULT_JVM_OPTS variable, new value set to '${DEFAULT_JVM_OPTS}'"
+       echo "Using DEFAULT_JVM_OPTS variable with value '${DEFAULT_JVM_OPTS}'"
    else
        echo "Using DEFAULT_JVM_OPTS variable with value '${DEFAULT_JVM_OPTS}'"
        echo "Not using kill-switch or modules flags starting from this version of Java"
