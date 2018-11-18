@@ -177,17 +177,10 @@ set JAVA_VERSION_11=11
 
 if %JAVA_VERSION_INT_VALUE% lss %JAVA_VERSION_9% (
    echo "--- Pre-Java 9 detected ---"
-   echo "Using DEFAULT_JVM_OPTS variable with value '%DEFAULT_JVM_OPTS%'"
 ) else (
    echo "--- Java 9 or higher detected (version %JAVA_VERSION_INT_VALUE%) ---"
-   if %JAVA_VERSION_INT_VALUE% lss %JAVA_VERSION_11% (
-       set DEFAULT_JVM_OPTS=--illegal-access=warn --add-modules=java.xml.bind,java.activation %DEFAULT_JVM_OPTS%
-       echo "Adding JVM args to the DEFAULT_JVM_OPTS variable, new value set to '%DEFAULT_JVM_OPTS%'"
-   ) else (
-      echo "Using DEFAULT_JVM_OPTS variable with value '%DEFAULT_JVM_OPTS%'"
-      echo "Not using kill-switch or modules flags starting from this version of Java"
-   )
 )
+echo "Using DEFAULT_JVM_OPTS variable with value '%DEFAULT_JVM_OPTS%'"
 echo "--------------------------------------------------------------------------------------------------------------"
 
 @echo on
@@ -196,7 +189,7 @@ echo "--------------------------------------------------------------------------
 @echo off
 
 :end
-@rem End local scope for the variables with windows NT shell
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
