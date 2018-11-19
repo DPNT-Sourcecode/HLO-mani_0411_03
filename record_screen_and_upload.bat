@@ -61,7 +61,7 @@ set JAVA_HOME=%JAVA_HOME:"=%
 @rem       %%~sI       -  expanded path contains short names only
 @rem                     (see description at https://stackoverflow.com/questions/1333589/how-do-i-transform-the-working-directory-into-a-8-3-short-file-name-using-batch?answertab=active#tab-top)
 @rem
-@rem %%..1 or %%..I in the above example, refers to the input parameter (whole string) to 'for'
+@rem %%..1 or %%..I in the above example                                                                                                                                                                                                                                                                                                                                                                , refers to the input parameter (whole string) to 'for'
 @rem Note: in a batch script we need to use %% instead of just % as per the docs.
 
 for %%f in ("%JAVA_HOME%") do set JAVA_HOME=%%~sf
@@ -171,15 +171,6 @@ for /f "tokens=1,2 delims=-" %%a in ("%JAVA_VERSION%") do (
 
 echo.
 echo JAVA_VERSION=%JAVA_VERSION_INT_VALUE%
-
-set JAVA_VERSION_9=9
-set JAVA_VERSION_11=11
-
-if %JAVA_VERSION_INT_VALUE% lss %JAVA_VERSION_9% (
-   echo "--- Pre-Java 9 detected ---"
-) else (
-   echo "--- Java 9 or higher detected (version %JAVA_VERSION_INT_VALUE%) ---"
-)
 echo "Using DEFAULT_JVM_OPTS variable with value '%DEFAULT_JVM_OPTS%'"
 echo "--------------------------------------------------------------------------------------------------------------"
 
@@ -189,7 +180,7 @@ echo "--------------------------------------------------------------------------
 @echo off
 
 :end
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @rem End local scope for the variables with windows NT shell
+@rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
