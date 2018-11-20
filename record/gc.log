@@ -1,0 +1,17 @@
+Java HotSpot(TM) 64-Bit Server VM (25.152-b16) for linux-amd64 JRE (1.8.0_152-b16), built on Sep 14 2017 02:16:14 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+Memory: 4k page, physical 15871708k(2209688k free), swap 3999228k(3999228k free)
+CommandLine flags: -XX:InitialHeapSize=253947328 -XX:LogFile=Safepoint.logs -XX:+LogVMOutput -XX:MaxHeapSize=2147483648 -XX:+PrintFlagsFinal -XX:+PrintGC -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCCause -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintSafepointStatistics -XX:+PrintTenuringDistribution -XX:+UnlockDiagnosticVMOptions -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+0.142: Total time for which application threads were stopped: 0.0000663 seconds, Stopping threads took: 0.0000166 seconds
+0.309: Total time for which application threads were stopped: 0.0001055 seconds, Stopping threads took: 0.0000128 seconds
+0.490: Total time for which application threads were stopped: 0.0001493 seconds, Stopping threads took: 0.0000139 seconds
+0.510: Total time for which application threads were stopped: 0.0000917 seconds, Stopping threads took: 0.0000092 seconds
+0.510: Total time for which application threads were stopped: 0.0000595 seconds, Stopping threads took: 0.0000060 seconds
+Heap
+ PSYoungGen      total 72704K, used 34980K [0x00000000d5580000, 0x00000000da680000, 0x0000000100000000)
+  eden space 62464K, 56% used [0x00000000d5580000,0x00000000d77a93f0,0x00000000d9280000)
+  from space 10240K, 0% used [0x00000000d9c80000,0x00000000d9c80000,0x00000000da680000)
+  to   space 10240K, 0% used [0x00000000d9280000,0x00000000d9280000,0x00000000d9c80000)
+ ParOldGen       total 166912K, used 0K [0x0000000080000000, 0x000000008a300000, 0x00000000d5580000)
+  object space 166912K, 0% used [0x0000000080000000,0x0000000080000000,0x000000008a300000)
+ Metaspace       used 14046K, capacity 14288K, committed 14592K, reserved 1062912K
+  class space    used 1700K, capacity 1792K, committed 1792K, reserved 1048576K

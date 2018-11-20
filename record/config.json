@@ -1,0 +1,21 @@
+{
+  "classPath": [
+    "record-and-upload.jar"
+  ],
+  "mainClass": "tdl.record_upload.RecordAndUploadApp",
+  "vmArgs": [
+    "-XX:+PrintFlagsFinal",
+    "-Xmx2G",
+    "-verbose:gc",
+    "-Xloggc:gc.log",
+    "-XX:+PrintGCDetails",
+    "-XX:+PrintGCTimeStamps",
+    "-XX:+PrintTenuringDistribution",
+    "-XX:+PrintGCCause",
+    "-XX:+PrintGCApplicationStoppedTime",
+    "-XX:+UnlockDiagnosticVMOptions",
+    "-XX:+PrintSafepointStatistics",
+    "-XX:+LogVMOutput",
+    "-XX:LogFile=safepoint.logs"
+  ]
+}

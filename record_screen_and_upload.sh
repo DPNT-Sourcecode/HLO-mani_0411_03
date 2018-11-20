@@ -4,6 +4,12 @@ set -e
 set -u
 set -o pipefail
 
+##############################################################################
+##
+##  App start up script for UN*X
+##
+##############################################################################
+
 warn ( ) {
     echo "$*"
 }
@@ -20,6 +26,22 @@ function splitJvmOpts() {
     JVM_OPTS=("$@")
 }
 
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+case "`uname`" in
+  CYGWIN* )
+    cygwin=true
+    ;;
+  Darwin* )
+    darwin=true
+    ;;
+  MINGW* )
+    msys=true
+    ;;
+esac
+
 # Add default JVM options here. You can also use JAVA_OPTS and RECORD_OPTS to pass JVM options to this script.
 DEFAULT_JVM_OPTS=""
 
@@ -29,53 +51,30 @@ APP_BASE_NAME=`basename "$0"`
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD="maximum"
 
-startRecorderViaCapsule() {
+# For Cygwin, ensure paths are in UNIX format before anything is touched.
+if ${cygwin} ; then
+    [ -n "$JAVA_HOME" ] && JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+fi
 
-    ##############################################################################
-    ##
-    ##  App start up script for UN*X
-    ##
-    ##############################################################################
-
-    # OS specific support (must be 'true' or 'false').
-    cygwin=false
-    msys=false
-    darwin=false
-    case "`uname`" in
-      CYGWIN* )
-        cygwin=true
-        ;;
-      Darwin* )
-        darwin=true
-        ;;
-      MINGW* )
-        msys=true
-        ;;
-    esac
-
-    # For Cygwin, ensure paths are in UNIX format before anything is touched.
-    if ${cygwin} ; then
-        [ -n "$JAVA_HOME" ] && JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+# Attempt to set APP_HOME
+# Resolve links: $0 may be a link
+PRG="$0"
+# Need this for relative symlinks.
+while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=`dirname "$PRG"`"/$link"
     fi
+done
+SAVED="`pwd`"
+cd "`dirname \"$PRG\"`/" >&-
+APP_HOME="`pwd -P`"
+cd "$SAVED" >&-
 
-    # Attempt to set APP_HOME
-    # Resolve links: $0 may be a link
-    PRG="$0"
-    # Need this for relative symlinks.
-    while [ -h "$PRG" ] ; do
-        ls=`ls -ld "$PRG"`
-        link=`expr "$ls" : '.*-> \(.*\)$'`
-        if expr "$link" : '/.*' > /dev/null; then
-            PRG="$link"
-        else
-            PRG=`dirname "$PRG"`"/$link"
-        fi
-    done
-    SAVED="`pwd`"
-    cd "`dirname \"$PRG\"`/" >&-
-    APP_HOME="`pwd -P`"
-    cd "$SAVED" >&-
-
+startRecorderViaCapsule() {
     # Determine the Java command to use to start the JVM.
     if [ -n "$JAVA_HOME" ] ; then
         if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
@@ -162,16 +161,16 @@ startRecorderViaCapsule() {
         esac
     fi
 
+    # Prepare params
+    PARAM_CONFIG_FILE="--config ${APP_HOME}/config/credentials.config"
+    PARAM_STORE_DIR="--store ${APP_HOME}/record/localstore"
+    PARAM_SOURCECODE_DIR="--sourcecode ${APP_HOME}"
+
     # Prepare jar file
     JARFILE=${APP_HOME}/record/record-and-upload-capsule.jar
     if $cygwin ; then
         JARFILE=`cygpath --path --mixed "$JARFILE"`
     fi
-
-    # Prepare params
-    PARAM_CONFIG_FILE="--config ${APP_HOME}/config/credentials.config"
-    PARAM_STORE_DIR="--store ${APP_HOME}/record/localstore"
-    PARAM_SOURCECODE_DIR="--sourcecode ${APP_HOME}"
 
     # Look for tokens "9, "10, "11 or "12 in the Java version string,
     # if found, return the whole Java String, otherwise return empty string
@@ -217,3 +216,29 @@ startRecorderViaCapsule() {
 }
 
 startRecorderViaCapsule $@
+
+startRecorderViaPackr() {
+    # Prepare params
+    PARAM_CONFIG_FILE="--config ${APP_HOME}/config/credentials.config"
+    PARAM_STORE_DIR="--store ${APP_HOME}/record/localstore"
+    PARAM_SOURCECODE_DIR="--sourcecode ${APP_HOME}"
+
+    # typically we would be downloading this via wget from an S3 bucket
+    if [[ -s record-and-upload.zip ]]; then
+        cp $HOME/git-repos/BeFaster/record-and-upload/scripts/packr-scripts/linux/record-and-upload.zip .
+    fi    
+
+    if [[ ! -e record ]]; then
+        unzip record-and-upload.zip
+    fi
+
+    cd record && record-and-upload ${PARAM_CONFIG_FILE} ${PARAM_STORE_DIR} ${PARAM_SOURCECODE_DIR} $@ && cd ..
+    # JAVACMD=${APP_HOME}/record/jre/bin/java
+    # chmod +x ${JAVACMD}
+    # set -x
+    # cd record && "$JAVACMD" -jar record-and-upload-capsule.jar -Dcapsule.log=verbose ${PARAM_CONFIG_FILE} ${PARAM_STORE_DIR} ${PARAM_SOURCECODE_DIR} $@ && cd ..
+    # set +x
+}
+
+#startRecorderViaPackr $@
+echo "Last errorcode: $?"
